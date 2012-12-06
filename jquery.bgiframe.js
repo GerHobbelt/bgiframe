@@ -2,11 +2,13 @@
  * Licensed under the MIT License (LICENSE.txt).
  *
  * Version 2.1.3-pre
+ *
+ * MSIE6 test according to http://stackoverflow.com/questions/2196470/what-is-the-best-way-to-detect-internet-explorer-6-using-javascript
  */
 
 (function($){
 
-$.fn.bgiframe = ($.browser && $.browser.msie && /msie 6\.0/i.test(navigator.userAgent) ? function(s) {
+$.fn.bgiframe = (/\bMSIE 6/i.test(navigator.userAgent) && !window.opera) ? function(s) {
     s = $.extend({
         top     : 'auto', // auto == .currentStyle.borderTopWidth
         left    : 'auto', // auto == .currentStyle.borderLeftWidth
@@ -27,7 +29,9 @@ $.fn.bgiframe = ($.browser && $.browser.msie && /msie 6\.0/i.test(navigator.user
         if ( $(this).children('iframe.bgiframe').length === 0 )
             this.insertBefore( document.createElement(html), this.firstChild );
     });
-} : function() { return this; });
+} : function() { 
+  return this; 
+});
 
 // old alias
 $.fn.bgIframe = $.fn.bgiframe;
