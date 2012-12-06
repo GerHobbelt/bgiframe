@@ -8,7 +8,7 @@
 
 (function($){
 
-$.fn.bgiframe = (/\bMSIE 6/i.test(navigator.userAgent) && !window.opera) ? function(s) {
+$.fn.bgiframe = ((/\bMSIE 6/i.test(navigator.userAgent) && !window.opera) ? function(s) {
     s = $.extend({
         top     : 'auto', // auto == .currentStyle.borderTopWidth
         left    : 'auto', // auto == .currentStyle.borderLeftWidth
